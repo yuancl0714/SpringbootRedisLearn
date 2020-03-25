@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cl.learn.redis.model.mapper.ProblemMapper">
+
+    <resultMap type="com.cl.learn.redis.model.entity.Problem" id="ProblemMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="choiceA" column="choice_a" jdbcType="VARCHAR"/>
+        <result property="choiceB" column="choice_b" jdbcType="VARCHAR"/>
+        <result property="isActive" column="is_active" jdbcType="INTEGER"/>
+        <result property="orderBy" column="order_by" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ProblemMap">
+        select
+          id, title, choice_a, choice_b, is_active, order_by
+        from sb_redis.problem
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ProblemMap">
+        select
+          id, title, choice_a, choice_b, is_active, order_by
+        from sb_redis.problem
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ProblemMap">
+        select
+          id, title, choice_a, choice_b, is_active, order_by
+        from sb_redis.problem
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="choiceA != null and choiceA != ''">
+                and choice_a = #{choiceA}
+            </if>
+            <if test="choiceB != null and choiceB != ''">
+                and choice_b = #{choiceB}
+            </if>
+            <if test="isActive != null">
+                and is_active = #{isActive}
+            </if>
+            <if test="orderBy != null">
+                and order_by = #{orderBy}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sb_redis.problem(title, choice_a, choice_b, is_active, order_by)
+        values (#{title}, #{choiceA}, #{choiceB}, #{isActive}, #{orderBy})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sb_redis.problem
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="choiceA != null and choiceA != ''">
+                choice_a = #{choiceA},
+            </if>
+            <if test="choiceB != null and choiceB != ''">
+                choice_b = #{choiceB},
+            </if>
+            <if test="isActive != null">
+                is_active = #{isActive},
+            </if>
+            <if test="orderBy != null">
+                order_by = #{orderBy},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from sb_redis.problem where id = #{id}
+    </delete>
+
+</mapper>
