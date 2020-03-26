@@ -2,10 +2,14 @@ package com.cl.learn.redis.server.controller;
 
 import com.cl.learn.redis.api.response.BaseResponse;
 import com.cl.learn.redis.api.response.StatusCode;
+import com.cl.learn.redis.server.config.RedisConfig;
 import com.github.pagehelper.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -27,7 +31,22 @@ public class BaseController {
             }
             response.setData(name);
         } catch (Exception e) {
-            response.setData(StatusCode.Fail);
+            response = new BaseResponse(StatusCode.Fail);
+        }
+        return response;
+    }
+
+    @Autowired
+    private StringRedisTemplate template;
+
+    @RequestMapping("string/data")
+    public BaseResponse stringData(@RequestParam String name) {
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+
+        try {
+            template.opsForValue().set("MyName", name);
+        } catch (Exception e) {
+            response = new BaseResponse(StatusCode.Fail);
         }
         return response;
     }
