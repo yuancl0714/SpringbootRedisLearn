@@ -1,7 +1,6 @@
 package com.cl.learn.redis.model.entity;
 
 import lombok.Data;
-import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
@@ -18,5 +17,7 @@ public class Item implements Serializable{
     private String name;
 
     private Date createTime;
+
+    private String content;
 
 }

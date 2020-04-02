@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
@@ -15,6 +16,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @MapperScan(basePackages = "com.cl.learn.redis.model.mapper")
 // 定时任务调度
 @EnableScheduling
+
+@EnableAsync
 public class MainApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
