@@ -63,4 +63,42 @@ public class StringController {
         }
         return response;
     }
+
+    // 修改商品信息
+    @RequestMapping(value = "update", method = RequestMethod.PUT)
+    public BaseResponse update(@RequestBody @Validated Item item, BindingResult result) {
+        if (result.hasErrors()) {
+            return new BaseResponse(StatusCode.InvalidParams);
+        }
+        // 如果参数有问题统一处理
+        if (item.getId() <= 0 || item.getId() == null) {
+            return new BaseResponse(StatusCode.InvalidParams);
+        }
+
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+        try {
+            response.setData(stringService.update(item));
+        } catch (Exception e) {
+            log.error("商品对象信息管理-缓存-修改-异常信息：", e);
+            response = new BaseResponse(StatusCode.Fail);
+        }
+        return response;
+    }
+
+    // 删除商品信息
+    @RequestMapping(value = "delete", method = RequestMethod.DELETE)
+    public BaseResponse delete(@RequestParam("id") Integer id) {
+        if (id <= 0) {
+            return new BaseResponse(StatusCode.InvalidParams);
+        }
+
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+        try {
+            stringService.delete(id);
+        } catch (Exception e) {
+            log.error("商品对象信息管理-缓存-删除-异常信息：", e);
+            response = new BaseResponse(StatusCode.Fail);
+        }
+        return response;
+    }
 }

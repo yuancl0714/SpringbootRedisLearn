@@ -48,9 +48,43 @@ public class StringService {
 
     // 获取方法
     public Item get(final Integer id) throws Exception {
-        /*// 将此数据写入到Redis一份
-        ValueOperations value = redisTemplate.opsForValue();
-        value.get(Constant.RedisStringPrefix + id);*/
-        return itemMapper.selectByPrimaryKey(id);
+        // 方法中的对象
+        Item item = null;
+        String key = Constant.RedisStringPrefix + id;
+
+        // 判断缓存中有没有内容
+        if (redisTemplate.hasKey(key)) {
+            ValueOperations value = redisTemplate.opsForValue();
+            Object o = value.get(key);
+            if (o != null) {
+                item = objectMapper.readValue(o.toString(), Item.class);
+            }
+        } else {
+            item = itemMapper.selectByPrimaryKey(id);
+            // 从数据库查询出来之后往缓存中也放一份
+            ValueOperations value = redisTemplate.opsForValue();
+            if (item == null) {
+                // 设置为空，为了防止缓存穿透
+                value.set(key, "");
+            } else {
+                value.set(key, objectMapper.writeValueAsString(item));
+            }
+        }
+        return item;
+    }
+
+    // 修改商品信息
+    @Transactional(rollbackFor = Exception.class)
+    public Integer update(Item item) {
+        // 修改数据库的信息
+        int i = itemMapper.updateByPrimaryKey(item);
+        if (i <= 0) {
+
+        }
+    }
+
+    // 删除商品信息
+    public Integer delete(final Integer id) {
+        return itemMapper.deleteByPrimaryKey(id);
     }
 }
