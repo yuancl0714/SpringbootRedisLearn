@@ -13,5 +13,7 @@ public interface ItemMapper {
 
     int updateByPrimaryKeySelective(Item record);
 
+    int updateByPrimaryKeyWithBLOBs(Item record);
+
     int updateByPrimaryKey(Item record);
 }
