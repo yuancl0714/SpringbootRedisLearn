@@ -21,7 +21,6 @@ public class ValidatorUtil {
                 sb.append(error.getDefaultMessage()).append("\n");
             }*/
 
-
             //java8 steam api
             result.getAllErrors().forEach(error -> sb.append(error.getDefaultMessage()).append("\n"));
         }
