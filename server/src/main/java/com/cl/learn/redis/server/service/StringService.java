@@ -3,6 +3,7 @@ package com.cl.learn.redis.server.service;
 import com.cl.learn.redis.model.entity.Item;
 import com.cl.learn.redis.model.mapper.ItemMapper;
 import com.cl.learn.redis.server.enums.Constant;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,13 +79,24 @@ public class StringService {
     public Integer update(Item item) {
         // 修改数据库的信息
         int i = itemMapper.updateByPrimaryKey(item);
-        if (i <= 0) {
-
+        String key = Constant.RedisStringPrefix + item.getId();
+        if (i > 0) {
+            try {
+                // 将修改后的信息重新放到缓存中
+                ValueOperations value = redisTemplate.opsForValue();
+                value.set(key, objectMapper.writeValueAsString(item));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        return i;
     }
 
     // 删除商品信息
     public Integer delete(final Integer id) {
-        return itemMapper.deleteByPrimaryKey(id);
+        int i = itemMapper.deleteByPrimaryKey(id);
+        // 判断缓存中有没有该数据
+        redisTemplate.delete(Constant.RedisStringPrefix + id);
+        return i;
     }
 }

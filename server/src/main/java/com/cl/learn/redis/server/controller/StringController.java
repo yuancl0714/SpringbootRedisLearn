@@ -4,6 +4,8 @@ import com.cl.learn.redis.api.response.BaseResponse;
 import com.cl.learn.redis.api.response.StatusCode;
 import com.cl.learn.redis.model.entity.Item;
 import com.cl.learn.redis.server.service.StringService;
+import com.cl.learn.redis.server.utils.ValidatorUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +32,9 @@ public class StringController {
             MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResponse add(@RequestBody @Validated Item item, BindingResult result) {
         // 如果参数有问题统一处理
-        if (result.hasErrors()) {
-            return new BaseResponse(StatusCode.InvalidParams);
+        String checkResult = ValidatorUtil.checkResult(result);
+        if (StringUtils.isNotBlank(checkResult)) {
+            return new BaseResponse(StatusCode.InvalidParams.getCode(), checkResult);
         }
 
         BaseResponse response = new BaseResponse(StatusCode.Success);
@@ -67,8 +70,12 @@ public class StringController {
     // 修改商品信息
     @RequestMapping(value = "update", method = RequestMethod.PUT)
     public BaseResponse update(@RequestBody @Validated Item item, BindingResult result) {
-        if (result.hasErrors()) {
+        /*if (result.hasErrors()) {
             return new BaseResponse(StatusCode.InvalidParams);
+        }*/
+        String checkResult = ValidatorUtil.checkResult(result);
+        if (StringUtils.isNotBlank(checkResult)) {
+            return new BaseResponse(StatusCode.InvalidParams.getCode(), checkResult);
         }
         // 如果参数有问题统一处理
         if (item.getId() <= 0 || item.getId() == null) {
@@ -94,7 +101,7 @@ public class StringController {
 
         BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
-            stringService.delete(id);
+            response.setData(stringService.delete(id));
         } catch (Exception e) {
             log.error("商品对象信息管理-缓存-删除-异常信息：", e);
             response = new BaseResponse(StatusCode.Fail);
