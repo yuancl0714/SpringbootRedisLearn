@@ -79,7 +79,7 @@
                 <generatedKey column="id" sqlStatement="mysql" identity="true"/>
             </table>
         -->
-        <table tableName="item" domainObjectName="Item"
+        <table tableName="product" domainObjectName="Product"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"
