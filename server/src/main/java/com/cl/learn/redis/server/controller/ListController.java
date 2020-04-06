@@ -52,7 +52,39 @@ public class ListController {
         BaseResponse response = new BaseResponse(StatusCode.Success);
 
         // 添加商品信息
+        try {
+            response.setData(productService.add(product));
+        } catch (Exception e) {
+            log.info("---------商品信息添加异常--------", e);
+            e.printStackTrace();
+        }
+        return response;
+    }
 
+    /**
+     * 添加商品信息
+     *
+     * @return BaseResponse
+     */
+    @RequestMapping(value = "addList", method = RequestMethod.POST)
+    public BaseResponse addList(@RequestBody @Validated Product product, BindingResult result) {
+        // 参数问题统一处理
+        String checkResult = ValidatorUtil.checkResult(result);
+
+        if (StringUtils.isNotBlank(checkResult)) {
+            return new BaseResponse(StatusCode.Fail.getCode(), checkResult);
+        }
+
+        // 申明一个返回类
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+
+        // 添加商品信息
+        try {
+            response.setData(productService.add(product));
+        } catch (Exception e) {
+            log.info("---------商品信息添加异常--------", e);
+            e.printStackTrace();
+        }
         return response;
     }
 }
