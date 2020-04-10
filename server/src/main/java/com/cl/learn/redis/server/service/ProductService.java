@@ -10,6 +10,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author chenLei
  * @date 2020/4/4 22:17
@@ -40,5 +42,10 @@ public class ProductService {
             Long push = list.leftPush(key, objectMapper.writeValueAsString(product));
         }
         return insert;
+    }
+
+    public List<Integer> addList(List<Product> products) {
+        
+        return null;
     }
 }
