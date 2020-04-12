@@ -92,4 +92,11 @@
       is_active = #{isActive,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getProductList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

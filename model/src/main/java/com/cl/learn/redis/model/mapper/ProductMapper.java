@@ -1,6 +1,9 @@
 package com.cl.learn.redis.model.mapper;
 
 import com.cl.learn.redis.model.entity.Product;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    List<Product> getProductList(@Param("userId") Integer userId);
 }

@@ -15,9 +15,9 @@ public class Product implements Serializable {
     @NotNull(message = "所属商户id不能为空")
     private Integer userId;
 
-    private Integer scanTotal;
+    private Integer scanTotal = 0;
 
-    private Byte isActive;
+    private Byte isActive = 1;
 
     public Product(Integer id, String name, Integer userId, Integer scanTotal, Byte isActive) {
         this.id = id;
