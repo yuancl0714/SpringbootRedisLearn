@@ -4,6 +4,7 @@ import com.cl.learn.redis.api.response.BaseResponse;
 import com.cl.learn.redis.api.response.StatusCode;
 import com.cl.learn.redis.model.entity.Notice;
 import com.cl.learn.redis.model.entity.Product;
+import com.cl.learn.redis.server.service.NoticeService;
 import com.cl.learn.redis.server.service.ProductService;
 import com.cl.learn.redis.server.utils.ValidatorUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -26,12 +27,11 @@ import java.util.List;
 @RequestMapping(value = "list")
 public class ListController extends AbstractController {
 
-    // 申明redis模板
-    @Autowired
-    private RedisTemplate redisTemplate;
-
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private NoticeService noticeService;
 
     /**
      * 添加商品信息
@@ -93,7 +93,7 @@ public class ListController extends AbstractController {
         BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
             log.info("---平台发送通知给各位用户：{}", notice);
-
+            noticeService.addNotice(notice);
         } catch (Exception e) {
             response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
         }

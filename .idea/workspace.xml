@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d41c6709-1ed9-4030-99db-835f2dfc8e1a" name="Default Changelist" comment="" />
+    <list default="true" id="d41c6709-1ed9-4030-99db-835f2dfc8e1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/scheduler/ListListenerScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/thread/NoticeThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/controller/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/controller/ListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/cl/learn/redis/server/service/NoticeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,9 +53,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ZbK6eLkxqpEwtxRAmLIZd94lAy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -64,21 +75,90 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/model/src/main/resources" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/src/main/resources/mappers" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.sjhy.plugin.ui.TemplateSettingPanel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\project\learnproject\SpringbootRedisLearn\model\src\main\java\com\cl\learn\redis\model" />
-      <recent name="E:\project\learnproject\SpringbootRedisLearn\api\src\main\java\com\cl\learn\redis\api\response" />
-      <recent name="E:\project\learnproject\SpringbootRedisLearn\model\src\main\resources" />
-      <recent name="E:\project\learnproject\SpringbootRedisLearn\server\src\main\resources" />
+      <recent name="E:\project\learnproject\SpringbootRedisLearn\model\src\main\resources\mappers" />
+      <recent name="E:\project\learnproject\SpringbootRedisLearn\server\src\main\java\com\cl\learn\redis\server\thread" />
+      <recent name="E:\project\learnproject\SpringbootRedisLearn\server\src\main\java\com\cl\learn\redis\server\service" />
+      <recent name="E:\project\learnproject\SpringbootRedisLearn\server\src\main\java\com\cl\learn\redis\server\scheduler" />
+      <recent name="E:\project\learnproject\SpringbootRedisLearn\server\src\main\java\com\cl\learn\redis\server\utils" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.MainApplication">
+    <configuration name="RedisTest.method1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cl.learn.redis.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cl.learn.redis.test" />
+      <option name="MAIN_CLASS_NAME" value="com.cl.learn.redis.test.RedisTest" />
+      <option name="METHOD_NAME" value="method1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+                <option value="-e" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/model" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="model" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+                <option value="-e" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/model" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cl.learn.redis.server.MainApplication" />
@@ -86,18 +166,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.RedisTest.method1" />
+      <item itemvalue="Maven.model" />
+      <item itemvalue="Spring Boot.MainApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RedisTest.method1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:sb_redis@192.168.1.26" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -115,22 +200,123 @@
       <option name="presentableId" value="Default" />
       <updated>1585102179925</updated>
       <workItem from="1585102183634" duration="5275000" />
-      <workItem from="1585115331008" duration="5821000" />
+      <workItem from="1585115331008" duration="37792000" />
+      <workItem from="1585795391049" duration="19200000" />
+      <workItem from="1586221694842" duration="10590000" />
+      <workItem from="1586746508468" duration="249000" />
+      <workItem from="1586758659680" duration="4903000" />
+      <workItem from="1586827437802" duration="1218000" />
+      <workItem from="1587022419046" duration="6238000" />
     </task>
+    <task id="LOCAL-00001" summary="111">
+      <created>1585191544165</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585191544165</updated>
+    </task>
+    <task id="LOCAL-00002" summary="111">
+      <created>1585213165462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585213165462</updated>
+    </task>
+    <task id="LOCAL-00003" summary="测试Redis">
+      <created>1585634062642</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585634062642</updated>
+    </task>
+    <task id="LOCAL-00004" summary="StringController">
+      <created>1585646578137</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585646578137</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1、修改了mapper.xml文件和接口不对称的问题&#10;2、商品信息的上传和获取">
+      <created>1585807835025</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585807835025</updated>
+    </task>
+    <task id="LOCAL-00006" summary="添加了mybatis逆向工程文件">
+      <created>1585809082350</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585809082350</updated>
+    </task>
+    <task id="LOCAL-00007" summary="添加了mybatis逆向工程文件">
+      <created>1585820648353</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585820648353</updated>
+    </task>
+    <task id="LOCAL-00008" summary="商品信息的更新和删除">
+      <created>1585898221537</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585898221537</updated>
+    </task>
+    <task id="LOCAL-00009" summary="商品信息的更新和删除">
+      <created>1585898272218</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585898272218</updated>
+    </task>
+    <task id="LOCAL-00010" summary="商品信息的更新和删除">
+      <created>1585898358271</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585898358271</updated>
+    </task>
+    <task id="LOCAL-00011" summary="商品信息的更新和删除">
+      <created>1586512530163</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1586512530163</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="111" />
+    <MESSAGE value="测试Redis" />
+    <MESSAGE value="StringController" />
+    <MESSAGE value="1、修改了mapper.xml文件和接口不对称的问题&#10;2、商品信息的上传和获取" />
+    <MESSAGE value="添加了mybatis逆向工程文件" />
+    <MESSAGE value="商品信息的更新和删除" />
+    <option name="LAST_COMMIT_MESSAGE" value="商品信息的更新和删除" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="71" key="#Project_Structure" timestamp="1585107495993">
+    <state x="361" y="71" key="#Notifications" timestamp="1585878338960">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1585107495993" />
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585116518647">
+    <state x="361" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1585878338960" />
+    <state x="361" y="71" key="#Project_Structure" timestamp="1585206652806">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585116518647" />
+    <state x="361" y="71" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1585206652806" />
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586320907032">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1586320907032" />
+    <state x="490" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585617070164">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="490" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585617070164" />
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1585107089624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -139,46 +325,74 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="188" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1585118490816" />
-    <state width="1493" height="282" key="GridCell.Tab.0.bottom" timestamp="1585120246067">
+    <state x="361" y="0" key="CommitChangelistDialog2" timestamp="1586512522490">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
-    <state width="1493" height="282" key="GridCell.Tab.0.center" timestamp="1585120246067">
+    <state x="361" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586512522490" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585808445574">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
-    <state width="1493" height="282" key="GridCell.Tab.0.left" timestamp="1585120246066">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585808445574" />
+    <state width="1493" height="457" key="GridCell.Tab.0.bottom" timestamp="1587032908904">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585120246066" />
-    <state width="1493" height="282" key="GridCell.Tab.0.right" timestamp="1585120246067">
+    <state width="1493" height="457" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587032908904" />
+    <state width="1493" height="457" key="GridCell.Tab.0.center" timestamp="1587032908904">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
-    <state width="1493" height="282" key="GridCell.Tab.1.bottom" timestamp="1585120246067">
+    <state width="1493" height="457" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587032908904" />
+    <state width="1493" height="457" key="GridCell.Tab.0.left" timestamp="1587032908904">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
-    <state width="1493" height="282" key="GridCell.Tab.1.center" timestamp="1585120246067">
+    <state width="1493" height="457" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587032908904" />
+    <state width="1493" height="457" key="GridCell.Tab.0.right" timestamp="1587032908904">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
-    <state width="1493" height="282" key="GridCell.Tab.1.left" timestamp="1585120246067">
+    <state width="1493" height="457" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587032908904" />
+    <state width="1493" height="457" key="GridCell.Tab.1.bottom" timestamp="1587032908905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
-    <state width="1493" height="282" key="GridCell.Tab.1.right" timestamp="1585120246067">
+    <state width="1493" height="457" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587032908905" />
+    <state width="1493" height="457" key="GridCell.Tab.1.center" timestamp="1587032908904">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585120246067" />
+    <state width="1493" height="457" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587032908904" />
+    <state width="1493" height="457" key="GridCell.Tab.1.left" timestamp="1587032908904">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="457" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587032908904" />
+    <state width="1493" height="457" key="GridCell.Tab.1.right" timestamp="1587032908905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="457" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587032908905" />
+    <state width="1493" height="457" key="GridCell.Tab.2.bottom" timestamp="1587032908905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="457" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587032908905" />
+    <state width="1493" height="457" key="GridCell.Tab.2.center" timestamp="1587032908905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="457" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587032908905" />
+    <state width="1493" height="457" key="GridCell.Tab.2.left" timestamp="1587032908905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="457" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587032908905" />
+    <state width="1493" height="457" key="GridCell.Tab.2.right" timestamp="1587032908905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="457" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587032908905" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1585115680717">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1585115680717" />
-    <state x="-16" y="6" width="1429" height="782" key="SettingsEditor" timestamp="1585120518933">
+    <state x="81" y="14" width="1429" height="782" key="SettingsEditor" timestamp="1585807484894">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-16" y="6" width="1429" height="782" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585120518933" />
+    <state x="81" y="14" width="1429" height="782" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585807484894" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1586512874528">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586512874528" />
     <state x="565" y="190" key="chooseDestDirectoryDialog" timestamp="1585117047243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -191,6 +405,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1585120618651" />
+    <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587032915322">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587032915322" />
+    <state x="321" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1587032817905">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="321" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1587032817905" />
     <state x="377" y="117" width="782" height="590" key="find.popup" timestamp="1585118526289">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -199,5 +421,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="107" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1585102274420" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1585808418849">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585808418849" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585808186295">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585808186295" />
   </component>
 </project>

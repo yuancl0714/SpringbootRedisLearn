@@ -31,7 +31,7 @@ public class NoticeService extends AbstractController {
         if (selective > 0) {
             // 往缓存中添加一份
             ListOperations<String, Notice> list = redisTemplate.opsForList();
-            list.leftPush(Constant.RedisListNoticeKey + notice.getId(), notice);
+            list.leftPush(Constant.RedisListNoticeKey, notice);
         }
         return 1;
     }

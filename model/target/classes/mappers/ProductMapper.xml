@@ -1,84 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cl.learn.redis.model.mapper.ProductMapper">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cl.learn.redis.model.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.cl.learn.redis.model.entity.Product" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="scan_total" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="is_active" jdbcType="TINYINT" javaType="java.lang.Byte" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, user_id, scan_total, is_active
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cl.learn.redis.model.entity.Product" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into product (name, user_id, scan_total, 
+      is_active)
+    values (#{name,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{scanTotal,jdbcType=INTEGER}, 
+      #{isActive,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cl.learn.redis.model.entity.Product" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="scanTotal != null" >
+        scan_total,
+      </if>
+      <if test="isActive != null" >
+        is_active,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="scanTotal != null" >
+        #{scanTotal,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cl.learn.redis.model.entity.Product" >
+    update product
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="scanTotal != null" >
+        scan_total = #{scanTotal,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null" >
+        is_active = #{isActive,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cl.learn.redis.model.entity.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      scan_total = #{scanTotal,jdbcType=INTEGER},
+      is_active = #{isActive,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
-    <resultMap type="com.cl.learn.redis.model.entity.Product" id="ProductMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
-        <result property="scanTotal" column="scan_total" jdbcType="INTEGER"/>
-        <result property="isActive" column="is_active" jdbcType="INTEGER"/>
-    </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="ProductMap">
-        select
-          id, name, user_id, scan_total, is_active
-        from sb_redis.product
-        where id = #{id}
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="ProductMap">
-        select
-          id, name, user_id, scan_total, is_active
-        from sb_redis.product
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="ProductMap">
-        select
-          id, name, user_id, scan_total, is_active
-        from sb_redis.product
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="name != null and name != ''">
-                and name = #{name}
-            </if>
-            <if test="userId != null">
-                and user_id = #{userId}
-            </if>
-            <if test="scanTotal != null">
-                and scan_total = #{scanTotal}
-            </if>
-            <if test="isActive != null">
-                and is_active = #{isActive}
-            </if>
-        </where>
-    </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into sb_redis.product(name, user_id, scan_total, is_active)
-        values (#{name}, #{userId}, #{scanTotal}, #{isActive})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update sb_redis.product
-        <set>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
-            <if test="userId != null">
-                user_id = #{userId},
-            </if>
-            <if test="scanTotal != null">
-                scan_total = #{scanTotal},
-            </if>
-            <if test="isActive != null">
-                is_active = #{isActive},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from sb_redis.product where id = #{id}
-    </delete>
-
+  <select id="getProductList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>
