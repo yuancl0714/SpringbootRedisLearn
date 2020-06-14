@@ -1,30 +1,24 @@
 package com.cl.learn.redis.model.entity;
 
-import org.hibernate.validator.constraints.NotBlank;
+import java.util.Objects;
 
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-
-
-public class Product implements Serializable {
+public class Product {
     private Integer id;
 
-    @NotBlank(message = "商品名称不能为空")
-    private String name;
+    private String productName;
 
-    @NotNull(message = "所属商户id不能为空")
-    private Integer userId;
+    private String category;
 
-    private Integer scanTotal = 0;
+    private String productType;
 
-    private Byte isActive = 1;
+    private Integer functionEntry;
 
-    public Product(Integer id, String name, Integer userId, Integer scanTotal, Byte isActive) {
+    public Product(Integer id, String productName, String category, String productType, Integer functionEntry) {
         this.id = id;
-        this.name = name;
-        this.userId = userId;
-        this.scanTotal = scanTotal;
-        this.isActive = isActive;
+        this.productName = productName;
+        this.category = category;
+        this.productType = productType;
+        this.functionEntry = functionEntry;
     }
 
     public Product() {
@@ -39,35 +33,52 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setProductName(String productName) {
+        this.productName = productName == null ? null : productName.trim();
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setCategory(String category) {
+        this.category = category == null ? null : category.trim();
     }
 
-    public Integer getScanTotal() {
-        return scanTotal;
+    public String getProductType() {
+        return productType;
     }
 
-    public void setScanTotal(Integer scanTotal) {
-        this.scanTotal = scanTotal;
+    public void setProductType(String productType) {
+        this.productType = productType == null ? null : productType.trim();
     }
 
-    public Byte getIsActive() {
-        return isActive;
+    public Integer getFunctionEntry() {
+        return functionEntry;
     }
 
-    public void setIsActive(Byte isActive) {
-        this.isActive = isActive;
+    public void setFunctionEntry(Integer functionEntry) {
+        this.functionEntry = functionEntry;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(productName, product.productName) &&
+                Objects.equals(category, product.category) &&
+                Objects.equals(productType, product.productType) &&
+                Objects.equals(functionEntry, product.functionEntry);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, productName, category, productType, functionEntry);
     }
 }

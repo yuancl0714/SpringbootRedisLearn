@@ -86,8 +86,16 @@
                modelType="flat">
             <generatedKey column="id" sqlStatement="mysql" identity="true"/>
         </table>
-        -->
+
         <table tableName="notice" domainObjectName="Notice"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               modelType="flat">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        -->
+        <table tableName="product" domainObjectName="Product"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"
