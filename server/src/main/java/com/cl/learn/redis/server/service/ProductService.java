@@ -36,7 +36,7 @@ public class ProductService {
         // 如果插入成功往缓存放一份商品的信息
         if (insert > 0) {
             ListOperations<String, Product> list = redisTemplate.opsForList();
-            list.leftPush(Constant.RedisListPrefix + product.getUserId(), product);
+            list.leftPush(Constant.RedisListPrefix + product.getId(), product);
         }
         return 1;
     }
