@@ -18,7 +18,7 @@ public class Constant {
 
     public static final String RedisSetKey="SpringBoot:Redis:Set:User:Email";
 
-    public static final String RedisSetProblemKey="SpringBoot:Redis:Set:Problem";
+    public static final String RedisSetProblemKey="SpringBoot:Redis:Set:Problem:V1";
 
     public static final String RedisSetProblemsKey="SpringBoot:Redis:Set:Problems:V1";
 

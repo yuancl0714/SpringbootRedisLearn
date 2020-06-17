@@ -8,6 +8,8 @@ import com.cl.learn.redis.model.entity.User;
 import com.cl.learn.redis.model.mapper.UserMapper;
 import com.cl.learn.redis.server.enums.Constant;
 import com.cl.learn.redis.server.service.EmailService;
+import com.cl.learn.redis.server.thread.NoticeThread;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 列表list的监听任务调度器
@@ -66,15 +70,15 @@ public class ListListenerScheduler {
     private void sendNoticeToUser(Notice notice){
         if (notice!=null){
             //方式一
-            List<User> list=userMapper.selectList();
+            /*List<User> list=userMapper.selectList();
             if (list!=null && !list.isEmpty()){
                 //list.forEach(user -> emailService.sendSimpleEmail(notice.getTitle(),notice.getContent(),user.getEmail()));
                 list.forEach(user -> emailService.sendSimpleEmail(notice.getTitle(),notice.getContent(),user.getEmail()));
-            }
+            }*/
 
             //方式二：多线程
-            /*try {
-                ExecutorService executorService=Executors.newFixedThreadPool(10);
+            try {
+                ExecutorService executorService= Executors.newFixedThreadPool(10);
                 List<NoticeThread> threads= Lists.newLinkedList();
 
                 List<User> list=userMapper.selectList();
@@ -85,7 +89,7 @@ public class ListListenerScheduler {
                 executorService.invokeAll(threads);
             }catch (Exception e){
                 log.error("--近实时的监听列表list中的消息-多线程发送通知公告-发生异常：",e);
-            }*/
+            }
         }
 
     }
