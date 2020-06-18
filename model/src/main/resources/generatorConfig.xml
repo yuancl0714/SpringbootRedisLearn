@@ -94,7 +94,7 @@
                modelType="flat">
             <generatedKey column="id" sqlStatement="mysql" identity="true"/>
         </table>
-        -->
+
         <table tableName="problem" domainObjectName="Problem"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
@@ -103,6 +103,15 @@
             <generatedKey column="id" sqlStatement="mysql" identity="true"/>
             <columnOverride column="is_active" javaType="java.lang.Integer"/>
             <columnOverride column="order_by" javaType="java.lang.Integer"/>
+        </table>
+        -->
+        <table tableName="phone_fare" domainObjectName="PhoneFare"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               modelType="flat">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+            <columnOverride column="is_active" javaType="java.lang.Integer"/>
         </table>
     </context>
 </generatorConfiguration>

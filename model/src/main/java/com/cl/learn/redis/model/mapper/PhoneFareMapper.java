@@ -1,11 +1,8 @@
 package com.cl.learn.redis.model.mapper;
 
 import com.cl.learn.redis.model.entity.PhoneFare;
-import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-import java.util.Set;
-
+import java.util.SortedSet;
 
 public interface PhoneFareMapper {
     int deleteByPrimaryKey(Integer id);
@@ -20,7 +17,5 @@ public interface PhoneFareMapper {
 
     int updateByPrimaryKey(PhoneFare record);
 
-    Set<PhoneFare> sortFareByPhone(@Param("isAsc") Integer isAsc);
-
-    List<PhoneFare> getAllSortFares();
+    SortedSet<PhoneFare> getPhoneFare();
 }

@@ -1,18 +1,11 @@
 package com.cl.learn.redis.model.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Data
-@EqualsAndHashCode
-@NoArgsConstructor
-public class PhoneFare implements Serializable {
+public class PhoneFare {
     private Integer id;
 
     @NotBlank(message = "手机号码不能为空！")
@@ -21,10 +14,53 @@ public class PhoneFare implements Serializable {
     @NotNull(message = "充值金额不能为空！")
     private BigDecimal fare;
 
-    private Byte isActive = 1;
+    private Integer isActive;
+
+    public PhoneFare(Integer id, String phone, BigDecimal fare, Integer isActive) {
+        this.id = id;
+        this.phone = phone;
+        this.fare = fare;
+        this.isActive = isActive;
+    }
 
     public PhoneFare(String phone, BigDecimal fare) {
         this.phone = phone;
         this.fare = fare;
+    }
+
+    public PhoneFare() {
+        super();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public BigDecimal getFare() {
+        return fare;
+    }
+
+    public void setFare(BigDecimal fare) {
+        this.fare = fare;
+    }
+
+    public Integer getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Integer isActive) {
+        this.isActive = isActive;
     }
 }

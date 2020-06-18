@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 // 设置运行器
@@ -101,6 +102,40 @@ public class RedisTest {
         log.info("---从集合key1中弹出一个随机元素：{}", set.pop(key1));
         log.info("---集合key1的元素：{}", set.members(key1));
         log.info("---将c从集合key1的元素列表中移除：{}", set.remove(key1, "c"));
+    }
+
+    @Test
+    public void method4() {
+        log.info("------开始列表SortedSet测试------");
+
+        // 定义key值
+        final String key = "StringBootRedis:SortedSet:10010:V1";
+        redisTemplate.delete(key);
+
+        ZSetOperations opsForZSet = redisTemplate.opsForZSet();
+        opsForZSet.add(key, "a", 8.0);
+        opsForZSet.add(key, "b", 2.0);
+        opsForZSet.add(key, "c", 4.0);
+        opsForZSet.add(key, "d", 6.0);
+        Long size = opsForZSet.size(key);
+        log.info("---有序集合SortedSet的成员数：{}", size);
+        log.info("---有序集合SortedSet-按照分数正序：{}", opsForZSet.range(key, 0L, size));
+
+        log.info("---有序集合SortedSet-按照分数倒序：{}", opsForZSet.reverseRange(key, 0L, size));
+        log.info("---有序集合SortedSet-获取成员a的分数：{}", opsForZSet.score(key, "a"));
+
+        log.info("---有序集合SortedSet-获取成员c的分数：{}", opsForZSet.score(key, "c"));
+        log.info("---有序集合SortedSet-正序中c的排名：{}", opsForZSet.rank(key, "c"));
+        log.info("---有序集合SortedSet-倒序中c的排名：{}", opsForZSet.reverseRank(key, "c"));
+        opsForZSet.incrementScore(key, "b", 8.0);
+        log.info("---为元素b加十分后，有序集合SortedSet-按照分数倒序：{}", opsForZSet.reverseRange(key, 0L, size));
+
+        opsForZSet.remove(key, "b");
+        log.info("---移除元素b后，有序集合SortedSet-按照分数倒序：{}", opsForZSet.reverseRange(key, 0L, size));
+        log.info("---有序集合SortedSet-取出分数区间0-7的成员：{}", opsForZSet.rangeByScore(key, 0, 7));
+        log.info("---有序集合SortedSet-取出带分数的排好序的成员：");
+        Set<ZSetOperations.TypedTuple<String>> set = opsForZSet.rangeWithScores(key, 0L, size);
+        set.forEach(tuple -> log.info("--当前成员：{}，对应分数：{}", tuple.getValue(), tuple.getScore()));
     }
 
 }
