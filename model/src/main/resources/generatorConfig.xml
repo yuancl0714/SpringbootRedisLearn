@@ -104,8 +104,17 @@
             <columnOverride column="is_active" javaType="java.lang.Integer"/>
             <columnOverride column="order_by" javaType="java.lang.Integer"/>
         </table>
-        -->
+
         <table tableName="phone_fare" domainObjectName="PhoneFare"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               modelType="flat">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+            <columnOverride column="is_active" javaType="java.lang.Integer"/>
+        </table>
+        -->
+        <table tableName="sys_config" domainObjectName="SysConfig"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"

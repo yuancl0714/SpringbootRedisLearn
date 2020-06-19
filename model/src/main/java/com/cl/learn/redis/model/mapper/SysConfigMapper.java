@@ -17,5 +17,5 @@ public interface SysConfigMapper {
 
     int updateByPrimaryKey(SysConfig record);
 
-    List<SysConfig> selectActiveConfigs();
+    List<SysConfig> getAll();
 }

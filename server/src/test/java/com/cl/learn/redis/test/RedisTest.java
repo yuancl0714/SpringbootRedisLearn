@@ -1,6 +1,7 @@
 package com.cl.learn.redis.test;
 
 import com.cl.learn.redis.server.MainApplication;
+import com.google.common.collect.Maps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -138,4 +141,30 @@ public class RedisTest {
         set.forEach(tuple -> log.info("--当前成员：{}，对应分数：{}", tuple.getValue(), tuple.getScore()));
     }
 
+    @Test
+    public void method5() {
+        log.info("------开始列表Hash测试------");
+
+        // 定义key值
+        final String key = "StringBootRedis:Hash:key:V1";
+        redisTemplate.delete(key);
+
+        HashOperations<String, String, String> hash = redisTemplate.opsForHash();
+        hash.put(key, "10010", "zhangsan");
+        hash.put(key, "10011", "lisi");
+        hash.put(key, "10012", "wangwu");
+        Map<String, String> map = Maps.newHashMap();
+        map.put("10013", "zhaoliu");
+        hash.putAll(key, map);
+
+        log.info("--哈希hash-获取列表元素：{}", hash.entries(key));
+        log.info("--哈希hash-获取10012的元素：{}", hash.get(key, "10012"));
+        log.info("--哈希hash-获取所有元素field列表：{}", hash.keys(key));
+        log.info("--哈希hash-10013成员是否存在：{}", hash.hasKey(key, "10013"));
+        log.info("--哈希hash-10014成员是否存在：{}", hash.hasKey(key, "10014"));
+        log.info("--哈希hash-删除元素10010 10011：{}", hash.delete(key, "10010", "10011"));
+        log.info("--哈希hash-获取列表元素：{}", hash.entries(key));
+        log.info("--哈希hash-获取列表元素个数：{}", hash.size(key));
+
+    }
 }
