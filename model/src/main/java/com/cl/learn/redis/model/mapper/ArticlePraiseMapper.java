@@ -16,5 +16,5 @@ public interface ArticlePraiseMapper {
 
     int updateByPrimaryKey(ArticlePraise record);
 
-    int cancelPraise(@Param("articleId") Integer articleId, @Param("userId") Integer userId);
+    Integer cancelPraise(@Param("articleId") Integer articleId, @Param("userId") Integer userId);
 }

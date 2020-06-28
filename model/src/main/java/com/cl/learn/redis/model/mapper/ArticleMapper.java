@@ -18,9 +18,7 @@ public interface ArticleMapper {
 
     int updateByPrimaryKey(Article record);
 
-    List<Article> selectAll();
+    List<Article> getArticleList();
 
-    int updatePraiseTotal(@Param("articleId") Integer articleId, @Param("flag") Integer flag);
-
-    Article selectByPK(@Param("articleId") Integer articleId);
+    void updatePraiseTotal(@Param("articleId") Integer articleId, @Param("flag") int flag);
 }
