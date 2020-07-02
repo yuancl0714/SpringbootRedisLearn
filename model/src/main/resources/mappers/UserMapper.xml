@@ -88,4 +88,15 @@
       id IN (${ids})
   </select>
 
+  <select id="selectNames" resultType="java.lang.String">
+    SELECT
+      GROUP_CONCAT(`name`)
+    FROM
+      `user`
+    WHERE
+      id IN 
+      <foreach collection="collection" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+  </select>
 </mapper>

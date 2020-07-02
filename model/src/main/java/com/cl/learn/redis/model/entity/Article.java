@@ -1,8 +1,9 @@
 package com.cl.learn.redis.model.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Article {
+public class Article implements Serializable {
     private Integer id;
 
     private String title;
@@ -22,18 +23,6 @@ public class Article {
     private Date updateTime;
 
     private String userName;
-
-    public Article(Integer id, String title, String content, Integer userId, Integer scanTotal, Integer praiseTotal, Integer isActive, Date createTime, Date updateTime) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.userId = userId;
-        this.scanTotal = scanTotal;
-        this.praiseTotal = praiseTotal;
-        this.isActive = isActive;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
 
     public Integer getId() {
         return id;

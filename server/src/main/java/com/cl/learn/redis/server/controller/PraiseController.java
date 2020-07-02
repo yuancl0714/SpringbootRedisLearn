@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,4 +82,39 @@ public class PraiseController extends AbstractController {
         }
         return response;
     }
+
+    // 获取文章详情~排行榜
+    @RequestMapping(value = "getArticles", method = RequestMethod.GET)
+    public BaseResponse getArticles(@RequestParam Integer articleId, Integer curUserId) {
+        // 校验数据
+        if (articleId == null || articleId < 0) {
+            return new BaseResponse(StatusCode.InvalidParams);
+        }
+
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+
+        try {
+            response.setData(praiseService.getArticleInfo(articleId, curUserId));
+        } catch (Exception e) {
+            log.info("---获取文章详情~排行榜---", e);
+            response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
+        }
+        return response;
+    }
+
+    // 获取用户点赞过的历史文章
+    @RequestMapping(value = "user/articles", method = RequestMethod.GET)
+    public BaseResponse getUserArticles(@RequestParam Integer curUserId) {
+
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+
+        try {
+            response.setData(praiseService.getUserArticles(curUserId));
+        } catch (Exception e) {
+            log.info("---获取文章详情~排行榜---", e);
+            response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
+        }
+        return response;
+    }
+
 }

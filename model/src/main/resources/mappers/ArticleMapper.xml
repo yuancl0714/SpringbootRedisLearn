@@ -159,4 +159,15 @@
     and
         is_active = 1
   </update>
+
+  <select id="selectByPK" resultType="com.cl.learn.redis.model.entity.Article">
+    select
+        a.*,b.name as userName
+    from
+        article a left join user b on b.id = a.user_id
+    where
+        a.is_active = 1
+    and
+        a.id = #{articleId}
+  </select>
 </mapper>

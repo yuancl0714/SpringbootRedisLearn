@@ -21,4 +21,6 @@ public interface ArticleMapper {
     List<Article> getArticleList();
 
     void updatePraiseTotal(@Param("articleId") Integer articleId, @Param("flag") int flag);
+
+    Article selectByPK(@Param("articleId") Integer articleId, @Param("curUserId") Integer curUserId);
 }
