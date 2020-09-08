@@ -1,7 +1,5 @@
 package com.cl.interview.javabasic.interview;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
